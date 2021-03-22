@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>L K</title>
+</head>
+<body>
+
+<p align="center">
+<label  for="name">Name: </label>
+<label  th:text="${lkinfo.getName()}" id="name">VALUE</label>
+</p>
+
+<p align="center">
+<label  for="surname">Surname: </label>
+<label  th:text="${lkinfo.getSurname()}" id="surname">VALUE</label>
+</p>
+
+<p align="center">
+<label  for="login">Login: </label>
+<label  th:text="${lkinfo.getLogin()}" id="login">VALUE</label>
+</p>
+
+<p align="center">
+<label  for="password">Password: </label>
+<label  th:text="${lkinfo.getPassword()}" id="password">VALUE</label>
+</p>
+
+<br/>
+<br/>
+
+<p th:align="center" th:if="${broninfo}" >
+    Bron:
+</p>
+
+<div th:each="bron : ${broninfo}" th:align="center">
+
+    <p>
+        <label>Hotel:</label>
+        <label th:text="${bron.nameH}">room</label>
+        <br/>
+        <label>Room:</label>
+        <label th:text="${bron.numR}">room</label>
+        <br/>
+        <label>Data Zaezda:</label>
+        <label th:text="${bron.data1}">data1</label>
+        <br/>
+        <label>Data Otezda:</label>
+        <label th:text="${bron.data2}">data2</label>
+        <br/>
+
+        <label>ID:</label>
+        <label th:text="${bron.id}">data2</label>
+        <br/>
+    <form th:action="@{/ARGAN/lk/{id}(id=${bron.id})}" method="POST">
+        <input type="submit" value="UnBron" />
+    </form>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </p>
+
+</div>
+
+<form th:align="center" action="/ARGAN/search"  method="GET">
+    <input type="submit" value="SEARCH" />
+</form>
+
+<br/>
+
+<form th:align="center" action="/ARGAN/history"  method="GET">
+    <input type="submit" value="History" />
+</form>
+
+<br/>
+
+<form th:align="center" action="/ARGAN/"  method="GET">
+    <input type="submit" value="EXIT" />
+</form>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotels</title>
+</head>
+<body>
+
+
+
+<p th:align="center" th:unless="${hotels}">
+    Error Search
+<form th:align="center" action="/ARGAN/search" method="GET" th:unless="${hotels}">
+    <input type="submit" value="OK" />
+</form>
+
+</p>
+
+
+
+<div th:each="hotel : ${hotels}" >
+
+    <p>
+        <label>Name:</label>
+        <a th:href="@{/ARGAN/rooms/{id}(id=${hotel.getId()})}" th:text="${hotel.getName()}">name</a>
+        <br/>
+        <label>Stars:</label>
+        <label th:text="${hotel.getStars()}">stars</label>
+        <br/>
+        <img th:src="${hotel.getPicture()}" width="300" height="200" alt="NO picture in system"/>
+        <br/>
+        <br/>
+        <br/>
+    </p>
+
+</div>
+
+
+
+</body>
+</html>

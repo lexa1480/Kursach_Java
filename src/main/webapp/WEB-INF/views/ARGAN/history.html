@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+</head>
+<body>
+
+<p th:align="center" th:if="${broninfoh}">
+    Bron History:
+</p>
+
+<p th:align="center" th:unless="${broninfoh}">
+    Bron History IS EMPTY:(
+</p>
+
+<div th:each="bronh : ${broninfoh}" th:align="center">
+
+    <p>
+        <label>Hotel:</label>
+        <label th:text="${bronh.nameH}">room</label>
+        <br/>
+        <label>Room:</label>
+        <label th:text="${bronh.numR}">room</label>
+        <br/>
+        <label>Data Zaezda:</label>
+        <label th:text="${bronh.data1}">data1</label>
+        <br/>
+        <label>Data Otezda:</label>
+        <label th:text="${bronh.data2}">data2</label>
+        <br/>
+
+        <label>ID:</label>
+        <label th:text="${bronh.id}">data2</label>
+        <br/>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    </p>
+
+</div>
+
+<form th:align="center" action="/ARGAN/lk"  method="GET">
+    <input type="submit" value="EXIT to Lk" />
+</form>
+
+</body>
+</html>

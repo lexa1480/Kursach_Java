@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+</head>
+<body>
+
+
+<div th:each="room : ${rooms}">
+
+    <p>
+        <label>Number:</label>
+        <label th:text="${room.getNumb()}">numb</label>
+        <br/>
+        <label>Quantity:</label>
+        <label th:text="${room.getQuantity()}">quantity</label>
+        <br/>
+        <label>Buff:</label>
+        <label th:text="${room.getBuff()}">buff</label>
+        <br/>
+        <label>Price:</label>
+        <label th:text="${room.getPrice()}">price</label>
+        <br/>
+
+    <form th:action="@{/ARGAN/{id}(id=${room.getId()})}" method="POST">
+        <input type="submit" value="Login" />
+    </form>
+
+    </p>
+    <br/>
+    <br/>
+
+</div>
+
+
+
+</body>
+</html>

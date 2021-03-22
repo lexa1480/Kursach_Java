@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+
+<form th:align="center" th:method="POST" th:action="@{/ARGAN/search}" th:object="${Session}">
+
+
+
+    <p>
+        N = :
+        <select th:field="*{quantity}">
+            <option th:value=1 th:text="1">Wireframe</option>
+            <option th:value=2 th:text="2">Wireframe</option>
+            <option th:value=3 th:text="3">Wireframe</option>
+            <option th:value=4 th:text="4">Wireframe</option>
+        </select>
+    </p>
+
+    <p>
+         Data1 = :
+    <input th:type="date" th:field="*{data1}" min="2021-01-31" id="data1"/>
+    <div style="color:red" th:if="${#fields.hasErrors('data1')}" th:errors="*{data1}">Data1 Error</div>
+    </p>
+
+
+
+    <p>
+        Data2 = :
+        <input th:type="date" th:field="*{data2}" min="2022-01-30" id="data2"/>
+    <div style="color:red" th:if="${#fields.hasErrors('data2')}" th:errors="*{data2}">Data2 Error</div>
+    </p>
+
+
+
+    <input type="submit" value="Search!"/>
+
+</form>
+
+<script>
+
+    document.getElementById('data1').valueAsDate = new Date();
+    document.getElementById('data2').valueAsDate = new Date();
+
+    var dataInput2 = document.getElementById('data1');
+    var data2 = document.getElementById('data1').value;
+
+    dataInput2.setAttribute('min',data2);
+    document.getElementById('data2').setAttribute('min',data2);
+
+
+    var dataInput = document.getElementById('data2');
+    var typeOfAccommodation = document.getElementById('data1');
+    typeOfAccommodation.onchange = function() {
+        var data1 = document.getElementById('data1').value;
+        dataInput.setAttribute('min', data1);
+    };
+
+</script>
+
+</body>
+</html>
